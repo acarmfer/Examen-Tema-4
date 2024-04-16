@@ -54,12 +54,7 @@ mensaje_decodificado_2 = decode_huffman_message(mensaje_2, alfabeto_egipcio)
 print("Mensaje 1 decodificado:", mensaje_decodificado_1)
 print("Mensaje 2 decodificado:", mensaje_decodificado_2)
 
-
-class TreeNode:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+# Diccionario de jeroglíficos al alfabeto egipcio
 
 def build_huffman_tree(codes):
     nodes = [TreeNode(symbol) for symbol in codes.keys()]
@@ -73,20 +68,7 @@ def build_huffman_tree(codes):
         nodes.append(parent)
     return nodes[0]
 
-def decode_huffman_message(message, codes):
-    decoded_message = []
-    current_code = ""
-    root = build_huffman_tree(codes)
-    node = root
-    for bit in message:
-        if bit == '0':
-            node = node.left
-        else:
-            node = node.right
-        if node.left is None and node.right is None:
-            decoded_message.append(codes[node.value])  # Agregar jeroglífico a la lista
-            node = root
-    return " ".join(decoded_message)  # Unir jeroglíficos con espacios para formar una palabra
+
 
 # Diccionario de jeroglíficos al alfabeto egipcio
 alfabeto_egipcio = {
